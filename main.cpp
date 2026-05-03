@@ -23,12 +23,11 @@ int main() {
     // -----------------------------------------------------------------------
     // 1. Simulation parameters
     // -----------------------------------------------------------------------
-    constexpr int   GRID_ROWS     = 40;        // cells
-    constexpr int   GRID_COLS     = 40;        // cells
+    constexpr int   GRID_ROWS     = 200;        // cells
+    constexpr int   GRID_COLS     = 200;        // cells
     constexpr float CELL_SIZE_FT  = 164.f;     // ft per cell (164 ft ≈ 50 m)
-    constexpr float MAX_TIME_MIN  = 60.f;      // simulate 60 minutes
-    constexpr float SNAPSHOT_INTERVAL = 10.f; // print ASCII every N minutes
-    constexpr int   FUEL_MODEL_ID = 2;         // Anderson 1-13
+    constexpr float MAX_TIME_MIN  = 240.f;      // simulate 60 minutes
+    constexpr int   FUEL_MODEL_ID = 4;         // Anderson 1-13
 
     // -----------------------------------------------------------------------
     // 2. Environment — moisture, wind, terrain
@@ -42,8 +41,8 @@ int main() {
     };
 
     WindInputs wind {
-        .midflame_speed = 0.f,   // mi/hr
-        .direction_deg  = 270.f,  // wind FROM west → fire spreads east
+        .midflame_speed = 10.f,   // mi/hr
+        .direction_deg  = 45.f,  // wind FROM west → fire spreads east
     };
 
     TerrainInputs terrain {
@@ -97,17 +96,7 @@ int main() {
     grid.run(MAX_TIME_MIN);
 
     // -----------------------------------------------------------------------
-    // 7. ASCII snapshots
-    // -----------------------------------------------------------------------
-    std::printf("Legend: '.' unburned   '*' active front   '#' burned\n\n");
-    for (float t = SNAPSHOT_INTERVAL; t <= MAX_TIME_MIN + 0.5f; t += SNAPSHOT_INTERVAL) {
-        std::printf("--- t = %.0f min ---\n", t);
-        grid.printASCII(t);
-        std::printf("\n");
-    }
-
-    // -----------------------------------------------------------------------
-    // 8. Write burn_times.csv
+    // 7. Write burn_times.csv
     //    Columns: row, col, burn_time_min
     //    -1 = never burned within simulation window
     // -----------------------------------------------------------------------
@@ -126,7 +115,7 @@ int main() {
     std::printf("Burn times written to %s\n", csv_path);
 
     // -----------------------------------------------------------------------
-    // 9. Summary stats
+    // 8. Summary stats
     // -----------------------------------------------------------------------
     int burned = 0;
     for (int r = 0; r < GRID_ROWS; ++r)
