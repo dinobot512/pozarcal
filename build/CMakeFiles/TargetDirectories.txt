@@ -1,0 +1,3 @@
+/home/dino/Documents/projects/drydock/pozarcal/build/CMakeFiles/fire_sim.dir
+/home/dino/Documents/projects/drydock/pozarcal/build/CMakeFiles/edit_cache.dir
+/home/dino/Documents/projects/drydock/pozarcal/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/dino/Documents/projects/drydock/pozarcal/build",
+  "command": "/usr/bin/c++  -I/home/dino/Documents/projects/drydock/pozarcal -g -std=gnu++17 -Wall -Wextra -O2 -o CMakeFiles/fire_sim.dir/main.cpp.o -c /home/dino/Documents/projects/drydock/pozarcal/main.cpp",
+  "file": "/home/dino/Documents/projects/drydock/pozarcal/main.cpp",
+  "output": "CMakeFiles/fire_sim.dir/main.cpp.o"
+}
+]
